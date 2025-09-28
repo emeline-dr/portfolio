@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #EAEBEA;
+  --foreground: #0C0E0C;
+  --accent-bg: #AD0013;
+  --accent-fg: #FF2020;
+
+  --logo-img: url('/images/logo-loup-bg.png');
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0C0E0C;
+    --foreground: #EAEBEA;
+    --accent-bg: #FF2020;
+    --accent-fg: #AD0013;
+
+    --logo-img: url('/images/logo-loup-fg.png');
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent-bg: var(--accent-bg);
+  --color-accent-fg: var(--accent-fg);
+
+  --font-cocomat: 'Cocomat';
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Cocomat';
+  src: url('/fonts/cocomat-pro-regular/cocomat-pro-regular.ttf') format('truetype');
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
