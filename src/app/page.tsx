@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <h1 className="absolute font-cocomat font-bold text-5xl/[1.4] text-accent-bg ms-[80px] top-0">
-        EMELINE DE ROO
+        EMELINE DE R.
       </h1>
 
       <LanguageSwitcher />
