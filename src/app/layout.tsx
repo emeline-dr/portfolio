@@ -3,10 +3,9 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
-// Tu charges les messages ici (ex: depuis /messages/[locale].json)
 async function getMessages(locale: string) {
   try {
-    return (await import(`../messages/${locale}.json`)).default;
+    return (await import(`../locales/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
