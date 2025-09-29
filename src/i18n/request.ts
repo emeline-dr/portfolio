@@ -10,7 +10,7 @@ export default getRequestConfig(async ({ locale }) => {
   const currentLocale =
     cookieLocale && supportedLocales.includes(cookieLocale)
       ? cookieLocale
-      : locale || 'en';
+      : locale || cookieStore.set("NEXT_LOCALE", 'en', { path: "/", expires: 365 });
 
   return {
     locale: currentLocale,
