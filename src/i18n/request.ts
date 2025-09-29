@@ -12,15 +12,6 @@ export default getRequestConfig(async ({ locale }) => {
       ? cookieLocale
       : locale || 'en';
 
-  if (!cookieLocale || !supportedLocales.includes(cookieLocale)) {
-    (await cookies()).set({
-      name: 'NEXT_LOCALE',
-      value: currentLocale,
-      path: '/',
-      maxAge: 365 * 24 * 60 * 60,
-    });
-  }
-
   return {
     locale: currentLocale,
     messages: (await import(`../../locales/${currentLocale}.json`)).default,
