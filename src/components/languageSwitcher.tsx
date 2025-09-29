@@ -8,12 +8,10 @@ export default function LanguageSwitcher() {
     const [cookieLocale, setCookieLocale] = useState<string | undefined>();
 
     useEffect(() => {
-        // Vérifie si le cookie existe
         const localeCookie = Cookies.get("NEXT_LOCALE");
         if (localeCookie) {
             setCookieLocale(localeCookie);
         } else {
-            // Détecte la langue du navigateur
             const browserLang = navigator.language.startsWith("fr") ? "fr" : "en";
             setCookieLocale(browserLang);
             Cookies.set("NEXT_LOCALE", browserLang, { path: "/", expires: 365 });
