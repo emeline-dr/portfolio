@@ -37,3 +37,12 @@
 body {
   background: var(--background);
 }
+
+.fi {
+  width: 24px !important;
+  line-height: 0em !important;
+}
+
+.fi::before {
+  content: "" !important;
+}

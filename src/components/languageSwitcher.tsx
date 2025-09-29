@@ -1,16 +1,39 @@
 'use client';
+
 import "flag-icons/css/flag-icons.min.css";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 
 export default function LanguageSwitcher() {
-    const switchLanguage = (lang: 'en' | 'fr') => {
-        document.cookie = `NEXT_LOCALE=${lang}; path=/; max-age=31536000`;
+    const [cookieLocale, setCookieLocale] = useState<string | undefined>();
+
+    useEffect(() => {
+        setCookieLocale(Cookies.get("NEXT_LOCALE"));
+    }, []);
+
+    const switchLanguage = (lang: "en" | "fr") => {
+        Cookies.set("NEXT_LOCALE", lang, { path: "/", expires: 365 });
         window.location.reload();
     };
 
     return (
-        <div className="absolute end-[80] top-0">
-            <button onClick={() => switchLanguage('en')}><span className="fi fi-gb h-[48] leading-[1.2]"></span></button>
-            <button onClick={() => switchLanguage('fr')}><span className="fi fi-fr h-[48] leading-[1.2]"></span></button>
+        <div className="absolute flex content-center h-[80] end-[80] top-0">
+            <button
+                onClick={() => switchLanguage("en")}
+                className={`h-[24] self-center me-[16] ${cookieLocale === "en" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
+                    }`}
+                disabled={cookieLocale === "en"}
+            >
+                <span className="fi fi-gb fis h-[24] rounded-sm"></span>
+            </button>
+            <button
+                onClick={() => switchLanguage("fr")}
+                className={`h-[24] self-center ${cookieLocale === "fr" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
+                    }`}
+                disabled={cookieLocale === "fr"}
+            >
+                <span className="fi fi-fr fis h-[24] rounded-sm"></span>
+            </button>
         </div>
     );
 }
