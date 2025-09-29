@@ -1,46 +1,23 @@
-'use client';
+import { getRequestConfig } from 'next-intl/server';
+import { cookies } from 'next/headers';
 
-import "flag-icons/css/flag-icons.min.css";
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+export default getRequestConfig(async ({ locale }) => {
+    const supportedLocales = ['en', 'fr'];
+    const cookieStore = await cookies();
+    let cookieLocale = cookieStore.get('NEXT_LOCALE')?.value;
 
-export default function LanguageSwitcher() {
-    const [cookieLocale, setCookieLocale] = useState<string | undefined>();
+    if (!cookieLocale) {
+        cookieLocale = locale?.startsWith('fr') ? 'fr' : 'en';
+        cookieStore.set('NEXT_LOCALE', cookieLocale, { path: '/', maxAge: 60 * 60 * 24 * 365 });
+    }
 
-    useEffect(() => {
-        const localeCookie = Cookies.get("NEXT_LOCALE");
-        if (localeCookie) {
-            setCookieLocale(localeCookie);
-        } else {
-            const browserLang = navigator.language.startsWith("fr") ? "fr" : "en";
-            setCookieLocale(browserLang);
-            Cookies.set("NEXT_LOCALE", browserLang, { path: "/", expires: 365 });
-        }
-    }, []);
+    const currentLocale =
+        cookieLocale && supportedLocales.includes(cookieLocale)
+            ? cookieLocale
+            : 'en';
 
-    const switchLanguage = (lang: "en" | "fr") => {
-        Cookies.set("NEXT_LOCALE", lang, { path: "/", expires: 365 });
-        window.location.reload();
+    return {
+        locale: currentLocale,
+        messages: (await import(`../../locales/${currentLocale}.json`)).default,
     };
-
-    return (
-        <div className="absolute flex content-center h-[80] end-[80] top-0">
-            <button
-                onClick={() => switchLanguage("en")}
-                className={`h-[24] self-center me-[16] ${cookieLocale === "en" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
-                    }`}
-                disabled={cookieLocale === "en"}
-            >
-                <span className="fi fi-gb fis h-[24] rounded-sm"></span>
-            </button>
-            <button
-                onClick={() => switchLanguage("fr")}
-                className={`h-[24] self-center ${cookieLocale === "fr" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
-                    }`}
-                disabled={cookieLocale === "fr"}
-            >
-                <span className="fi fi-fr fis h-[24] rounded-sm"></span>
-            </button>
-        </div>
-    );
-}
+});
