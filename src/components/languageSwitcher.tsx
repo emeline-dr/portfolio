@@ -24,7 +24,7 @@ export default function LanguageSwitcher() {
         <div className="absolute flex-col sm:flex-row flex justify-evenly sm:content-center h-[120] sm:h-[80] end-[80] top-0">
             <button
                 onClick={() => switchLanguage("en")}
-                className={`h-[24] self-center sm:mr-[16] ${cookieLocale === "en" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
+                className={`h-[24] self-center sm:mr-[16] ${cookieLocale === "en" ? "cursor-not-allowed grayscale-[85%]" : "opacity-25 transition hover:opacity-100 cursor-pointer"
                     }`}
                 disabled={cookieLocale === "en"}
             >
@@ -32,7 +32,7 @@ export default function LanguageSwitcher() {
             </button>
             <button
                 onClick={() => switchLanguage("fr")}
-                className={`h-[24] self-center ${cookieLocale === "fr" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
+                className={`h-[24] self-center ${cookieLocale === "fr" ? "cursor-not-allowed grayscale-[85%]" : "opacity-25 transition hover:opacity-100 cursor-pointer"
                     }`}
                 disabled={cookieLocale === "fr"}
             >
