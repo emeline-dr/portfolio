@@ -29,6 +29,22 @@
   --font-cocomat: 'Cocomat';
 }
 
+html.light {
+  --background: #EAEBEA;
+  --foreground: #0C0E0C;
+  --accent-bg: #AD0013;
+  --accent-fg: #FF2020;
+  --logo-img: url('/images/logo-loup-bg.png');
+}
+
+html.dark {
+  --background: #0C0E0C;
+  --foreground: #EAEBEA;
+  --accent-bg: #FF2020;
+  --accent-fg: #AD0013;
+  --logo-img: url('/images/logo-loup-fg.png');
+}
+
 @font-face {
   font-family: 'Cocomat';
   src: url('/fonts/cocomat-pro-regular/cocomat-pro-regular.ttf') format('truetype');
