@@ -16,7 +16,7 @@ export default function ModeSwitcher() {
     }, [theme]);
 
     return (
-        <div className="absolute end-[24] top-[80] h-[104] w-[40] rounded-sm bg-foreground flex flex-col justify-evenly items-center">
+        <div className="absolute end-[20] top-[8] sm:top-[80] h-[104] w-[40] rounded-sm bg-foreground flex flex-col justify-evenly items-center">
             <button onClick={() => setTheme('light')}>
                 <Tooltip
                     key="left"

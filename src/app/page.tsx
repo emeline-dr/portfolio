@@ -7,7 +7,12 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="absolute font-cocomat font-bold text-5xl/[1.4] text-accent-bg ms-[80px] top-0">
+      <div
+        className="absolute top-[24] sm:top-[4] start-0 size-22 bg-no-repeat bg-contain bg-center"
+        style={{ backgroundImage: "var(--logo-img)" }}
+      />
+
+      <h1 className="absolute h-[120] sm:h-[80] flex items-center font-cocomat font-bold text-xl sm:text-5xl text-accent-bg ms-[80px] top-0">
         EMELINE DE R.
       </h1>
 
@@ -15,12 +20,7 @@ export default function Home() {
 
       <LanguageSwitcher />
 
-      <div
-        className="absolute top-0 start-0 size-22 bg-no-repeat bg-contain bg-center"
-        style={{ backgroundImage: "var(--logo-img)" }}
-      />
-
-      <div className="m-[80px] bg-foreground text-background p-[40px]">
+      <div className="mx-[24px] sm:mx-[80px] mt-[120] sm:mt-[80] mb-[80px] bg-foreground text-background p-[40px]">
         {t('greetings')}
       </div>
     </div>

@@ -21,14 +21,14 @@ export default function LanguageSwitcher() {
     };
 
     return (
-        <div className="absolute flex content-center h-[80] end-[80] top-0">
+        <div className="absolute flex-col sm:flex-row flex justify-evenly sm:content-center h-[120] sm:h-[80] end-[80] top-0">
             <button
                 onClick={() => switchLanguage("en")}
-                className={`h-[24] self-center me-[16] ${cookieLocale === "en" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
+                className={`h-[24] self-center sm:mr-[16] ${cookieLocale === "en" ? "opacity-25 cursor-not-allowed" : "cursor-pointer"
                     }`}
                 disabled={cookieLocale === "en"}
             >
-                <span className="fi fi-gb fis h-[24] rounded-sm"></span>
+                <span className="fi fi-gb fis h-[24] rounded-sm outline outline-foreground outline-1"></span>
             </button>
             <button
                 onClick={() => switchLanguage("fr")}
@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
                     }`}
                 disabled={cookieLocale === "fr"}
             >
-                <span className="fi fi-fr fis h-[24] rounded-sm"></span>
+                <span className="fi fi-fr fis h-[24] rounded-sm outline outline-foreground outline-1"></span>
             </button>
         </div>
     );
