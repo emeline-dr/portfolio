@@ -10,7 +10,16 @@ export default getRequestConfig(async ({ locale }) => {
   const currentLocale =
     cookieLocale && supportedLocales.includes(cookieLocale)
       ? cookieLocale
-      : locale || cookieStore.set("NEXT_LOCALE", 'en', { path: "/", expires: 365 });
+      : locale || 'en';
+
+  if (!cookieLocale || !supportedLocales.includes(cookieLocale)) {
+    (await cookies()).set({
+      name: 'NEXT_LOCALE',
+      value: currentLocale,
+      path: '/',
+      maxAge: 365 * 24 * 60 * 60,
+    });
+  }
 
   return {
     locale: currentLocale,
