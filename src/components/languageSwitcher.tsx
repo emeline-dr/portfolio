@@ -10,7 +10,8 @@ export default function LanguageSwitcher() {
     useEffect(() => {
         setCookieLocale(Cookies.get("NEXT_LOCALE"));
         if (!Cookies.get("NEXT_LOCALE")) {
-            Cookies.set("NEXT_LOCALE", 'en', { path: "/", expires: 365 })
+            Cookies.set("NEXT_LOCALE", 'en', { path: "/", expires: 365 });
+            setCookieLocale(Cookies.get("NEXT_LOCALE"));
         }
     }, []);
 
