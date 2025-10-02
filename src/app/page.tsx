@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from "@/components/languageSwitcher";
 import ModeSwitcher from "@/components/modeSwitcher";
+import HeroWithScrollAnimation from '@/components/HeroWithScrollAnimation';
 
 export default function Home() {
   const t = useTranslations();
@@ -12,18 +13,20 @@ export default function Home() {
         style={{ backgroundImage: "var(--logo-img)" }}
       />
 
-      <h1 className="absolute h-[120] sm:h-[80] flex items-center font-cocomat font-bold text-xl sm:text-5xl text-accent-bg ms-[80px] top-0">
+      <h1 className="absolute h-[120px] sm:h-[80px] flex items-center font-cocomat font-bold text-xl sm:text-5xl text-accent-bg ml-[80px] top-0">
         EMELINE DE R.
       </h1>
 
       <ModeSwitcher />
-
       <LanguageSwitcher />
 
-      <div className="mx-[24px] sm:mx-[80px] mt-[120] sm:mt-[80] mb-[80px] bg-foreground text-background p-[40px]">
-        {t('greetings')}
-      </div>
+      <HeroWithScrollAnimation
+        greetings={t('greetings')}
+        firstAdj={t('firstAdjective')}
+        secondAdj={t('secondAdjective')}
+        thirdAdj={t('thirdAdjective')}
+        text={t('text')}
+      />
     </div>
   );
 }
-

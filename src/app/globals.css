@@ -54,6 +54,17 @@ body {
   background: var(--background);
 }
 
+.mainContain,
+.heroLeading,
+.sections {
+  height: calc(100vh - 160px)
+}
+
+.heroLeading {
+  width: 100%;
+  background-image: url('../../public/images/bg.jpg');
+}
+
 .fi {
   width: 24px !important;
   line-height: 0em !important;

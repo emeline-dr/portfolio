@@ -1,3 +1,7 @@
 {
-    "greetings": "Bonjour le monde !"
+    "greetings": "&lt; Bonjour le monde ! /&gt;",
+    "firstAdjective": "Développeuse Web",
+    "secondAdjective": "Dev. Front-End",
+    "thirdAdjective": "UX/UI Designer",
+    "text": "Test Section"
 }

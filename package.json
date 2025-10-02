@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@heroui/tooltip": "^2.2.23",
     "flag-icons": "^7.5.0",
+    "gsap": "^3.13.0",
     "js-cookie": "^3.0.5",
     "next": "15.5.4",
     "next-intl": "^4.3.9",
