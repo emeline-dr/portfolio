@@ -65,8 +65,6 @@ export default function HeroWithScrollAnimation(props: ScrollsProps) {
                 className="heroLeading p-[24px] flex items-end relative z-10"
                 ref={heroRef}
             >
-                <div className='sections mix-blend-hue absolute top-0 start-0 w-full bg-accent-bg z-0'></div>
-
                 {greetingsArray.map((pos, index) => (
                     <div
                         key={index}
