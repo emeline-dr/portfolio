@@ -6,6 +6,9 @@
   --accent-bg: #AD0013;
   --accent-fg: #FF2020;
 
+  --stroke-bg: rgb(173, 0, 19) 1px 0px 0px, rgb(173, 0, 19) 0.540302px 0.841471px 0px, rgb(173, 0, 19) -0.416147px 0.909297px 0px, rgb(173, 0, 19) -0.989993px 0.14112px 0px, rgb(173, 0, 19) -0.653644px -0.756803px 0px, rgb(173, 0, 19) 0.283662px -0.958924px 0px, rgb(173, 0, 19) 0.96017px -0.279416px 0px;
+  --stroke-fg: rgb(255, 32, 32) 1px 0px 0px, rgb(255, 32, 32) 0.540302px 0.841471px 0px, rgb(255, 32, 32) -0.416147px 0.909297px 0px, rgb(255, 32, 32) -0.989993px 0.14112px 0px, rgb(255, 32, 32) -0.653644px -0.756803px 0px, rgb(255, 32, 32) 0.283662px -0.958924px 0px, rgb(255, 32, 32) 0.96017px -0.279416px 0px;
+
   --logo-img: url('/images/logo-loup-bg.png');
 }
 
@@ -15,6 +18,9 @@
     --foreground: #EAEBEA;
     --accent-bg: #FF2020;
     --accent-fg: #AD0013;
+
+    --stroke-bg: rgb(255, 32, 32) 1px 0px 0px, rgb(255, 32, 32) 0.540302px 0.841471px 0px, rgb(255, 32, 32) -0.416147px 0.909297px 0px, rgb(255, 32, 32) -0.989993px 0.14112px 0px, rgb(255, 32, 32) -0.653644px -0.756803px 0px, rgb(255, 32, 32) 0.283662px -0.958924px 0px, rgb(255, 32, 32) 0.96017px -0.279416px 0px;
+    --stroke-fg: rgb(173, 0, 19) 1px 0px 0px, rgb(173, 0, 19) 0.540302px 0.841471px 0px, rgb(173, 0, 19) -0.416147px 0.909297px 0px, rgb(173, 0, 19) -0.989993px 0.14112px 0px, rgb(173, 0, 19) -0.653644px -0.756803px 0px, rgb(173, 0, 19) 0.283662px -0.958924px 0px, rgb(173, 0, 19) 0.96017px -0.279416px 0px;
 
     --logo-img: url('/images/logo-loup-fg.png');
   }
@@ -26,6 +32,9 @@
   --color-accent-bg: var(--accent-bg);
   --color-accent-fg: var(--accent-fg);
 
+  --color-stroke-fg: var(--stroke-fg);
+  --color-stroke-bg: var(--stroke-bg);
+
   --font-cocomat: 'Cocomat';
 }
 
@@ -34,6 +43,8 @@ html.light {
   --foreground: #0C0E0C;
   --accent-bg: #AD0013;
   --accent-fg: #FF2020;
+  --stroke-bg: rgb(173, 0, 19) 1px 0px 0px, rgb(173, 0, 19) 0.540302px 0.841471px 0px, rgb(173, 0, 19) -0.416147px 0.909297px 0px, rgb(173, 0, 19) -0.989993px 0.14112px 0px, rgb(173, 0, 19) -0.653644px -0.756803px 0px, rgb(173, 0, 19) 0.283662px -0.958924px 0px, rgb(173, 0, 19) 0.96017px -0.279416px 0px;
+  --stroke-fg: rgb(255, 32, 32) 1px 0px 0px, rgb(255, 32, 32) 0.540302px 0.841471px 0px, rgb(255, 32, 32) -0.416147px 0.909297px 0px, rgb(255, 32, 32) -0.989993px 0.14112px 0px, rgb(255, 32, 32) -0.653644px -0.756803px 0px, rgb(255, 32, 32) 0.283662px -0.958924px 0px, rgb(255, 32, 32) 0.96017px -0.279416px 0px;
   --logo-img: url('/images/logo-loup-bg.png');
 }
 
@@ -42,6 +53,8 @@ html.dark {
   --foreground: #EAEBEA;
   --accent-bg: #FF2020;
   --accent-fg: #AD0013;
+  --stroke-bg: rgb(255, 32, 32) 1px 0px 0px, rgb(255, 32, 32) 0.540302px 0.841471px 0px, rgb(255, 32, 32) -0.416147px 0.909297px 0px, rgb(255, 32, 32) -0.989993px 0.14112px 0px, rgb(255, 32, 32) -0.653644px -0.756803px 0px, rgb(255, 32, 32) 0.283662px -0.958924px 0px, rgb(255, 32, 32) 0.96017px -0.279416px 0px;
+  --stroke-fg: rgb(173, 0, 19) 1px 0px 0px, rgb(173, 0, 19) 0.540302px 0.841471px 0px, rgb(173, 0, 19) -0.416147px 0.909297px 0px, rgb(173, 0, 19) -0.989993px 0.14112px 0px, rgb(173, 0, 19) -0.653644px -0.756803px 0px, rgb(173, 0, 19) 0.283662px -0.958924px 0px, rgb(173, 0, 19) 0.96017px -0.279416px 0px;
   --logo-img: url('/images/logo-loup-fg.png');
 }
 
@@ -62,7 +75,12 @@ body {
 
 .heroLeading {
   width: 100%;
-  background-image: url('../../public/images/bg.jpg');
+  background-image: url('../../public/images/5262770.jpg');
+  background-size: cover;
+}
+
+.textHero {
+  text-shadow: var(--stroke-fg);
 }
 
 .fi {

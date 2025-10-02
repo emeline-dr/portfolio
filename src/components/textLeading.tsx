@@ -41,9 +41,9 @@ export default function TextLeading(props: localesTextProps) {
 
     return (
         <div ref={container} className="h-[140px] container relative font-cocomat">
-            <span className='absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.firstAdj}</span>
-            <span className='absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.secondAdj}</span>
-            <span className='absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.thirdAdj}</span>
+            <span className='textHero absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.firstAdj}</span>
+            <span className='textHero absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.secondAdj}</span>
+            <span className='textHero absolute w-full text-right top-0 start-0 text-9xl font-black'>{props.thirdAdj}</span>
         </div>
     );
 }
