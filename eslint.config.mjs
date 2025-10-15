@@ -22,7 +22,7 @@ const eslintConfig = [
   },
   ...compat.config({
     rules:{
-      'typescript-eslint/no-explicit-any': 'off'
+      '@typescript-eslint/no-explicit-any': 'off'
     }
   })
 ];
