@@ -1,4 +1,6 @@
 {
+    "dark": "Dark",
+    "light": "Light",
     "greetings": "&lt; Hello World ! /&gt;",
     "firstAdjective": "Web Developer",
     "secondAdjective": "Dev. Front-End",

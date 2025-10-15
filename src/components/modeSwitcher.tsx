@@ -1,8 +1,9 @@
 'use client'
-import { Tooltip } from "@heroui/tooltip";
-import { useState, useEffect } from "react";
 
-export default function ModeSwitcher() {
+import { Tooltip } from "@heroui/tooltip";
+import { useState, useEffect, JSXElementConstructor, ReactElement, ReactNode, ReactPortal } from "react";
+
+export default function ModeSwitcher(mode: { light: string; dark: string; }) {
     const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('auto');
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export default function ModeSwitcher() {
                     classNames={{
                         content: ["px-[8] text-foreground bg-accent-fg rounded-sm"]
                     }}
-                    content="Light"
+                    content={mode.light}
                     placement="left"
                 >
                     <svg
@@ -69,7 +70,7 @@ export default function ModeSwitcher() {
                     classNames={{
                         content: ["px-[8] text-foreground bg-accent-fg rounded-sm"]
                     }}
-                    content="Dark"
+                    content={mode.dark}
                     placement="left"
                 >
                     <svg

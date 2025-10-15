@@ -17,7 +17,10 @@ export default function Home() {
         EMELINE DE R.
       </h1>
 
-      <ModeSwitcher />
+      <ModeSwitcher
+        dark={t('dark')}
+        light={t('light')}
+      />
       <LanguageSwitcher />
 
       <HeroWithScrollAnimation
