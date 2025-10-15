@@ -68,9 +68,12 @@ body {
 }
 
 .mainContain,
-.heroLeading,
-.sections {
+.heroLeading {
   height: calc(100vh - 160px)
+}
+
+.sections {
+  height: calc(100vh - 158px)
 }
 
 .heroLeading {

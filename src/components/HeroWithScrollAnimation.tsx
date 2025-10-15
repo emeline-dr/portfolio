@@ -16,8 +16,6 @@ type ScrollsProps = {
 }
 
 export default function HeroWithScrollAnimation(props: ScrollsProps) {
-    const heroRef = useRef<HTMLDivElement>(null);
-    const sectionRef = useRef<HTMLDivElement>(null);
     const mainRef = useRef<HTMLDivElement>(null);
     const [greetingsArray, setGreetingsArray] = useState<{ top: number, left: number }[]>([]);
 
@@ -55,15 +53,87 @@ export default function HeroWithScrollAnimation(props: ScrollsProps) {
         }
     }, []);
 
+    useEffect(() => {
+        const scroller = mainRef.current;
+        if (!scroller) return;
+
+        ScrollTrigger.scrollerProxy(scroller, {
+            scrollTop(value?: number) {
+                if (typeof value === 'number') {
+                    scroller.scrollTop = value;
+                }
+                return scroller.scrollTop;
+            },
+            getBoundingClientRect() {
+                const widthFrame = window.innerWidth;
+                let positionTop = 120;
+                if (widthFrame >= 640) {
+                    positionTop = 80;
+                }
+                return {
+                    top: positionTop,
+                    left: 0,
+                    width: scroller.clientWidth,
+                    height: scroller.clientHeight,
+                };
+            },
+        });
+
+
+        const panels = gsap.utils.toArray<HTMLElement>('.panel');
+        const tops = panels.map(panel =>
+            ScrollTrigger.create({
+                trigger: panel,
+                scroller,
+                start: 'top top',
+            })
+        );
+
+        panels.forEach((panel) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                scroller,
+                start: () => panel.offsetHeight < scroller.clientHeight ? 'top top' : 'bottom bottom',
+                pin: true,
+                pinSpacing: false,
+                pinType: 'transform',
+            });
+        });
+
+        ScrollTrigger.create({
+            scroller,
+            snap: ({
+                snapTo: (progress: number, self: ScrollTrigger) => {
+                    const panelStarts = tops.map(st => st.start);
+                    const snapScroll = gsap.utils.snap(panelStarts, self!.scroll());
+                    return gsap.utils.normalize(0, ScrollTrigger.maxScroll(scroller), snapScroll);
+                },
+                duration: 0.5,
+            } as any),
+        });
+
+        ScrollTrigger.refresh();
+
+        const ro = new ResizeObserver(() => {
+            ScrollTrigger.refresh();
+        });
+        ro.observe(scroller);
+        panels.forEach(p => ro.observe(p));
+
+        return () => {
+            ro.disconnect();
+            ScrollTrigger.getAll().forEach(t => t.kill());
+            ScrollTrigger.scrollerProxy(scroller, {} as any);
+        };
+    }, []);
 
     return (
         <div
+            className="mainContain relative mx-[24px] sm:mx-[80px] top-[120px] sm:top-[80px] mb-[80px] bg-foreground text-background overflow-y-auto overflow-x-hidden"
             ref={mainRef}
-            className="mainContain relative mx-[24px] sm:mx-[80px] mt-[120px] sm:mt-[80px] mb-[80px] bg-foreground text-background overflow-y-auto"
         >
-            <div
-                className="heroLeading p-[24px] flex items-end relative z-10"
-                ref={heroRef}
+            <section
+                className="panel heroLeading p-[24px] flex items-end relative z-10"
             >
                 {greetingsArray.map((pos, index) => (
                     <div
@@ -75,14 +145,13 @@ export default function HeroWithScrollAnimation(props: ScrollsProps) {
                 ))}
 
                 <TextLeading firstAdj={props.firstAdj} secondAdj={props.secondAdj} thirdAdj={props.thirdAdj} />
-            </div>
+            </section>
 
-            <div
-                className="sections flex items-start justify-center bg-accent-bg text-white relative z-20"
-                ref={sectionRef}
+            <section
+                className="panel sections flex items-start justify-center bg-accent-bg text-white relative z-20"
             >
                 {props.text}
-            </div>
+            </section>
         </div>
     );
 }
